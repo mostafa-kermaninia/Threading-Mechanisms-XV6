@@ -13,6 +13,7 @@
 #include "fs.h"
 #include "spinlock.h"
 #include "sleeplock.h"
+#include "reentrantlock.h"
 #include "file.h"
 #include "fcntl.h"
 
@@ -495,4 +496,26 @@ int sys_move_file(void)
   end_op();
 
   return 0;
+}
+
+void
+lock_and_call(int i, struct reentrantlock *lk)
+{
+  acquirereentrant(lk);
+  cprintf("Acquiring lock: recursion = %d\n", lk->recursion);
+
+  if (i > 0)
+    lock_and_call(i - 1, lk); 
+  
+  releasereentrant(lk);
+  cprintf("Releasing lock: recursion = %d\n", lk->recursion);
+}
+
+void
+sys_reentrantlocktest(void)
+{
+  struct reentrantlock lk;
+  initreentrantlock(&lk);
+  cprintf("Initiating lock: recursion = %d\n", lk.recursion);
+  lock_and_call(3, &lk);
 }

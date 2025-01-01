@@ -32,6 +32,7 @@ int change_queue(int, int);
 int processes_info(void);
 int set_bc(int, int, int);
 int nsyscalls(void);
+void reentrantlocktest(void);
 
 
 // ulib.c
