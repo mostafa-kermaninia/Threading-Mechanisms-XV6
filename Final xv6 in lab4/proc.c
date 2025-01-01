@@ -6,6 +6,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+// #include "mp.h"
 
 struct
 {
@@ -882,4 +883,11 @@ void set_bc(int pid, int bursttime, int confidence)
     }
   }
   release(&ptable.lock);
+}
+
+void get_syscalls_num(void){
+  cprintf("%d, %d, %d, %d, ", cpus[0].syscallnum, cpus[1].syscallnum, cpus[2].syscallnum, cpus[3].syscallnum);
+  // acquire(&nsyscall.lock);
+  // cprintf("%d\n", nsyscall.n);
+  // release(&nsyscall.lock);
 }

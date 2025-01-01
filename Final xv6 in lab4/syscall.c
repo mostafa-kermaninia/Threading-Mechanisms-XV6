@@ -111,6 +111,7 @@ extern int sys_get_most_invoked_syscall(void);
 extern int sys_change_queue(void);
 extern int sys_processes_info(void);
 extern int sys_set_bc(void);
+extern int sys_nsyscalls(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -142,6 +143,7 @@ static int (*syscalls[])(void) = {
 [SYS_change_queue] sys_change_queue,
 [SYS_processes_info] sys_processes_info,
 [SYS_set_bc] sys_set_bc,
+[SYS_nsyscalls] sys_nsyscalls,
 };
 
 static char *syscall_names[] = {
@@ -174,6 +176,7 @@ static char *syscall_names[] = {
   [SYS_change_queue]        "change_queue",
   [SYS_processes_info]        "processes_info",
   [SYS_set_bc]        "set_bc",
+  [SYS_nsyscalls] "sys_nsyscalls",
 };
 
 void

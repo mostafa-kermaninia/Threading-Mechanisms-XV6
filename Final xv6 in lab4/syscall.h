@@ -28,3 +28,4 @@
 #define SYS_change_queue 27
 #define SYS_processes_info 28
 #define SYS_set_bc 29
+#define SYS_nsyscalls 30

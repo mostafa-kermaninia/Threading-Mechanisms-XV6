@@ -6,7 +6,7 @@
 #include "defs.h"
 #include "x86.h"
 #include "elf.h"
-#include "mp.h"
+// #include "mp.h"
 
 int
 exec(char *path, char **argv)
@@ -104,9 +104,9 @@ exec(char *path, char **argv)
 
   for(int i = 0; i < NCPU; i++)
     cpus[i].syscallnum = 0;
-  acquire(&nsyscall.lock);
-  nsyscall.n = 0;
-  release(&nsyscall.lock);
+  // acquire(&nsyscall.lock);
+  // nsyscall.n = 0;
+  // release(&nsyscall.lock);
 
   // Change queue for execs of shell's fork
   if(curproc->parent->pid == 2)

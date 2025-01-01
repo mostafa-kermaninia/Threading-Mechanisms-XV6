@@ -138,3 +138,8 @@ int sys_set_bc(void){
   set_bc(pid, bursttime, confidence);
   return 0;
 }
+
+int sys_nsyscalls(void){
+  get_syscalls_num();
+  return 0;
+}
