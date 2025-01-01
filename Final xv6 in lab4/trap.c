@@ -8,13 +8,11 @@
 #include "traps.h"
 #include "spinlock.h"
 #include "syscall.h"
-// #include "mp.h"
 
 // Interrupt descriptor table (shared by all CPUs).
 struct gatedesc idt[256];
 extern uint vectors[];  // in vectors.S: array of 256 entry pointers
 struct spinlock tickslock;
-
 
 void
 tvinit(void)
@@ -47,13 +45,15 @@ trap(struct trapframe *tf)
     if (tf->eax == SYS_write){
       cli();
       mycpu()->syscallnum += 2;
-      sti();  
+      sti(); 
+      cprintf("fuck os\n");
       // nsyscall.n += 2;
     }
     else if (tf->eax == SYS_open){
       cli();
       mycpu()->syscallnum += 3;
       sti();
+      cprintf("hi\n");
       // nsyscall.n += 3;
     }
     else{
@@ -61,6 +61,7 @@ trap(struct trapframe *tf)
       mycpu()->syscallnum++;
       sti();
       // nsyscall.n ++;
+      cprintf("%d\n", tf->eax);
     }
     // release(&nsyscall.lock);
     if(myproc()->killed)

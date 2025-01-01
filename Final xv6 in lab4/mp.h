@@ -1,11 +1,4 @@
 // See MultiProcessor Specification Version 1.[14]
-#include "spinlock.h"
-uint ticks;
-struct nsyslock {
-  struct spinlock lock;
-  int n;
-};
-extern struct nsyslock nsyscall;
 
 struct mp {             // floating pointer
   uchar signature[4];           // "_MP_"

@@ -1,5 +1,11 @@
 enum schedqueue { RR, SJF, FCFS };
 
+struct nsyslock {
+  struct spinlock lock;
+  int n;
+};
+extern struct nsyslock nsyscall;
+
 // Per-CPU state
 struct cpu {
   uchar apicid;                // Local APIC ID

@@ -6,7 +6,6 @@
 #include "defs.h"
 #include "x86.h"
 #include "elf.h"
-// #include "mp.h"
 
 int
 exec(char *path, char **argv)
