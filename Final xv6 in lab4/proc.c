@@ -15,6 +15,8 @@ struct
 
 static struct proc *initproc;
 
+int total_syscall;
+struct spinlock nsyscall_lock;
 int nextpid = 1;
 int nextfcfs = 1;
 extern void forkret(void);
@@ -885,8 +887,12 @@ void set_bc(int pid, int bursttime, int confidence)
 }
 
 void get_syscalls_num(void){
-  cprintf("%d, %d, %d, %d, ", cpus[0].syscallnum, cpus[1].syscallnum, cpus[2].syscallnum, cpus[3].syscallnum);
-  // acquire(&nsyscall.lock);
-  // cprintf("%d\n", nsyscall.n);
-  // release(&nsyscall.lock);
+  int sum = 0;
+  for (int i = 0; i < NCPU; i++)
+    sum += cpus[i].syscallnum;
+  cprintf("%d, %d, %d, %d, sum = %d,", cpus[0].syscallnum, cpus[1].syscallnum, cpus[2].syscallnum,
+         cpus[3].syscallnum, sum);
+  acquire(&nsyscall_lock);
+  cprintf("%d\n", total_syscall);
+  release(&nsyscall_lock);
 }

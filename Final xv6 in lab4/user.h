@@ -31,6 +31,7 @@ int get_most_invoked_syscall(int);
 int change_queue(int, int);
 int processes_info(void);
 int set_bc(int, int, int);
+int nsyscalls(void);
 
 
 // ulib.c
