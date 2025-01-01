@@ -10,8 +10,7 @@ struct sleeplock;
 struct stat;
 struct superblock;
 
-extern int total_syscall;
-extern struct spinlock nsyscall_lock;
+
 // bio.c
 void            binit(void);
 struct buf*     bread(uint, uint);
@@ -176,6 +175,8 @@ void            idtinit(void);
 extern uint     ticks;
 void            tvinit(void);
 extern struct spinlock tickslock;
+extern int total_syscall;
+extern struct spinlock nsyscall_lock;
 
 // uart.c
 void            uartinit(void);
