@@ -102,11 +102,11 @@ exec(char *path, char **argv)
   curproc->tf->esp = sp;
   switchuvm(curproc);
 
-  for(int i = 0; i < NCPU; i++)
-    cpus[i].syscallnum = 0;
-  acquire(&nsyscall_lock);
-  total_syscall = 0;
-  release(&nsyscall_lock);
+  // for(int i = 0; i < NCPU; i++)
+  //   cpus[i].syscallnum = 0;
+  // acquire(&nsyscall_lock);
+  // total_syscall = 0;
+  // release(&nsyscall_lock);
 
   // Change queue for execs of shell's fork
   if(curproc->parent->pid == 2)
