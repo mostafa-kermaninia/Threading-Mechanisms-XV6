@@ -2,7 +2,7 @@
 #include "stat.h"
 #include "user.h"
 
-#define NPROC 5
+#define NPROC 10
 
 int
 fibonacci(int n){
@@ -27,11 +27,18 @@ main(void)
       printf(1, "fibonacci(%d) = %d\n", n, fibonacci(n));
       exit();
     }
+    if(pid % 3 == 0)
+      set_bc(pid, 6, 80);
+    if (pid%4 == 0)
+      change_queue(pid, 1);
     printf(1, "scheduletest: starting process %d\n", pid);
+    processes_info();
   }
 
-  for(int i = 0; i < NPROC; i++)
+  for(int i = 0; i < NPROC; i++){
     printf(1, "scheduletest: ending process %d\n", wait());
+    processes_info();
+  }
 
   exit();
 }

@@ -28,6 +28,10 @@ int move_file(const char *, const char *);
 int sort_syscalls(int);
 int list_all_processes(void);
 int get_most_invoked_syscall(int);
+int change_queue(int, int);
+int processes_info(void);
+int set_bc(int, int, int);
+
 
 // ulib.c
 int stat(const char *, struct stat *);

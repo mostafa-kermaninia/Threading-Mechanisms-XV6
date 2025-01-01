@@ -121,3 +121,20 @@ int sys_change_queue(void){
   change_queue(pid, sel_q);
   return 0;
 }
+
+int sys_processes_info(void){
+  processes_info();
+  return 0;
+}
+
+int sys_set_bc(void){
+  int pid, bursttime, confidence;
+  if (argint(0, &pid) < 0)
+    return -1;
+  if (argint(1, &bursttime) < 0)
+    return -1;
+  if (argint(2, &confidence) < 0)
+    return -1;
+  set_bc(pid, bursttime, confidence);
+  return 0;
+}

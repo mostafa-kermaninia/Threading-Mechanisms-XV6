@@ -38,6 +38,7 @@ struct context {
 
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
+
 #define MAX_SYSCALLS 64  // Maximum number of distinct system calls to track
 
 // Per-process state
@@ -65,6 +66,7 @@ struct proc {
   int confidence;              // Confidence of SJF
   int arraival;                // Attaival time
   int wait_time;               // Wait time in a queue
+  int consecutive_time;        // Num of ticks that process is running 
 };
 
 // Process memory is laid out contiguously, low addresses first:
