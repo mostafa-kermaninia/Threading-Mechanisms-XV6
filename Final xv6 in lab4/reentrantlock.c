@@ -41,7 +41,7 @@ releasereentrant(struct reentrantlock *lk)
 
   lk->recursion--;
 
-  // Decrement the lock count or release the spinlock
+  // Check the detph to release the spinlock
   if (lk->recursion == 0) {
     lk->owner = 0;
     release(&lk->lock);
