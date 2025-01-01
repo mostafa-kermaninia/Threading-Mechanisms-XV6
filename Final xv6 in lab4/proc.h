@@ -12,6 +12,7 @@ struct cpu {
   struct proc *proc;           // The process running on this cpu or null
   enum schedqueue schedqueue;  // Current scheduling queue
   int queueticks;              // Numbert of ticks in the currecnt queue
+  int syscallnum;              // for counting cpu syscalls
 };
 
 extern struct cpu cpus[NCPU];
