@@ -15,8 +15,7 @@ struct
 
 static struct proc *initproc;
 
-int total_syscall;
-struct spinlock nsyscall_lock;
+
 int nextpid = 1;
 int nextfcfs = 1;
 extern void forkret(void);
