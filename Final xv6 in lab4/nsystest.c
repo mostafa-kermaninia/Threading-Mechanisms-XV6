@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     {
         if (!fork())
         {
-            write(fd, "nothing", 4);
+            write(fd, "nothing", 8);
             exit();
         }
         else
